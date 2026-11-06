@@ -1,0 +1,39 @@
+CONVITE DIGITAL CEPA — TURMA A
+
+Arquivos:
+- index.html: convite inteiro; aparência feita com estilos inline e JavaScript embutido.
+- config.js: configuração curta do mapa, volume e posições dos hotspots.
+- assets/opening.mp4: vídeo do livro e da história das crianças.
+- assets/video.mp4: vídeo principal desta turma, com os botões já desenhados.
+- assets/musica.mp3: trilha que começa depois do opening.
+- assets/manual.webp: arte do manual exibida em tela cheia.
+- assets/preview-whatsapp.jpg: capa 1200 x 630.
+- assets/*poster.webp: quadros de prévia enquanto os vídeos carregam.
+
+Funcionamento:
+1. Ao abrir o link, o opening tenta começar automaticamente. Não existe tela "Toque para abrir".
+2. Se o navegador bloquear o autoplay com áudio, o vídeo inicia silencioso e aparece "Ativar som". Isso é uma restrição dos navegadores móveis.
+3. "Pular vídeo" leva diretamente ao vídeo principal.
+4. Ao terminar o opening, começa o vídeo principal da Turma A.
+5. O vídeo principal fica em LOOP INFINITO; ao acabar, recomeça do início.
+6. A música MP3 começa junto com o vídeo principal. Se o navegador bloquear, aparece "Ativar música".
+7. Os botões gráficos já estão dentro do MP4. As duas áreas clicáveis HTML são transparentes.
+8. Localização abre o Google Maps. Manual abre a imagem manual.webp em tela cheia; a seta retorna ao convite.
+
+Editor:
+- Abra com ?editor=1.
+- O editor mostra o vídeo principal e áreas azuis de edição.
+- Arraste cada área até coincidir com o botão desenhado no vídeo.
+- Use a bolinha para redimensionar.
+- Clique em "Copiar posições" e cole o objeto hotspots no config.js.
+- O editor é independente para cada turma.
+
+Publicação:
+1. Extraia o ZIP.
+2. Envie o conteúdo extraído para a raiz de um repositório GitHub.
+3. Em Settings > Pages, selecione Deploy from a branch, main, / (root).
+4. Atualize no index.html as URLs Open Graph que ainda contêm SEU-USUARIO/SEU-REPOSITORIO.
+
+Importante:
+- O autoplay com som não pode ser garantido em todos os celulares. O vídeo tenta tocar com som e, se bloqueado, toca silenciosamente com o botão Ativar som.
+- O manual tem sugestões de regras que precisam ser confirmadas pela organização antes da divulgação.
