@@ -58,3 +58,20 @@ ATUALIZAÇÃO DA PRÉVIA DO WHATSAPP — A
 - Para publicar, envie/substitua index.html e o novo JPG dentro de assets/.
 - Mantenha preview-whatsapp.jpg também; não precisa apagá-lo.
 - Para testar no WhatsApp, envie um link novo com ?v=3 no final.
+
+
+CORREÇÃO DA PRÉVIA DO WHATSAPP — A
+O index.html agora aponta para uma imagem única na raiz do repositório:
+https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/whatsapp-preview-turma-a.jpg
+
+Arquivo novo: whatsapp-preview-turma-a.jpg
+Formato: JPEG baseline (não progressivo), RGB, 1200 × 630 px.
+Envie/substitua index.html e envie whatsapp-preview-turma-a.jpg para a raiz do mesmo repositório,
+ao lado de index.html. Não coloque esse JPG dentro de assets/.
+A capa também está na pasta assets com os nomes antigos, mas o Open Graph NÃO os utiliza.
+Depois da publicação, teste compartilhando o link com ?preview=4 no final:
+https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/?preview=4
+
+O WhatsApp pode manter em cache a prévia do link antigo. O parâmetro ?preview=4 serve
+para testar como um endereço novo. Se o link ainda não mostrar a imagem, use o
+Facebook Sharing Debugger para pedir uma nova leitura do URL.
