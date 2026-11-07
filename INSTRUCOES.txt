@@ -37,3 +37,8 @@ Publicação:
 Importante:
 - O autoplay com som não pode ser garantido em todos os celulares. O vídeo tenta tocar com som e, se bloqueado, toca silenciosamente com o botão Ativar som.
 - O manual tem sugestões de regras que precisam ser confirmadas pela organização antes da divulgação.
+
+ATUALIZAÇÃO DE 07/11/2026:
+- O arquivo assets/opening.mp4 foi substituído pelo novo vídeo de abertura enviado em WEBM e convertido para MP4 compatível com navegadores.
+- O título de compartilhamento agora é: Convite da Formatura do ABC — Turma A.
+- As tags Open Graph/Twitter usam a capa 1200x630 com endereço absoluto e versão para renovar o cache.
