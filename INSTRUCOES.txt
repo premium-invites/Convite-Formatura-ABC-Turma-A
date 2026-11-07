@@ -1,44 +1,60 @@
-CONVITE DIGITAL CEPA — TURMA A
+CONVITE DIGITAL — FORMATURA DO ABC | CEPA — TURMA A
 
-Arquivos:
-- index.html: convite inteiro; aparência feita com estilos inline e JavaScript embutido.
-- config.js: configuração curta do mapa, volume e posições dos hotspots.
-- assets/opening.mp4: vídeo do livro e da história das crianças.
-- assets/video.mp4: vídeo principal desta turma, com os botões já desenhados.
-- assets/musica.mp3: trilha que começa depois do opening.
-- assets/manual.webp: arte do manual exibida em tela cheia.
-- assets/preview-whatsapp.jpg: capa 1200 x 630.
-- assets/*poster.webp: quadros de prévia enquanto os vídeos carregam.
+ARQUIVOS
+- index.html: convite completo. O HTML contém os estilos e o JavaScript.
+- config.js: configurações da turma e posição da área clicável do Manual.
+- assets/opening.mp4: vídeo de abertura (livro e história das crianças).
+- assets/video.mp4: NOVO vídeo principal da Turma A, com o endereço escrito e sem botão de localização.
+- assets/musica.mp3: música que começa após o opening.
+- assets/manual.webp: arte do Manual do Convidado.
+- assets/preview-whatsapp.jpg: capa horizontal 1200 × 630 com "Convite Especial".
+- assets/opening-poster.webp e video-poster.webp: imagens de pré-visualização.
 
-Funcionamento:
-1. Ao abrir o link, o opening tenta começar automaticamente. Não existe tela "Toque para abrir".
-2. Se o navegador bloquear o autoplay com áudio, o vídeo inicia silencioso e aparece "Ativar som". Isso é uma restrição dos navegadores móveis.
-3. "Pular vídeo" leva diretamente ao vídeo principal.
-4. Ao terminar o opening, começa o vídeo principal da Turma A.
-5. O vídeo principal fica em LOOP INFINITO; ao acabar, recomeça do início.
-6. A música MP3 começa junto com o vídeo principal. Se o navegador bloquear, aparece "Ativar música".
-7. Os botões gráficos já estão dentro do MP4. As duas áreas clicáveis HTML são transparentes.
-8. Localização abre o Google Maps. Manual abre a imagem manual.webp em tela cheia; a seta retorna ao convite.
+FUNCIONAMENTO
+1. Ao abrir o convite, o vídeo opening tenta começar automaticamente.
+2. Há o botão "Pular vídeo".
+3. Ao terminar ou pular a abertura, começa o vídeo principal da Turma A.
+4. O vídeo principal fica em LOOP INFINITO.
+5. A música MP3 começa junto com o vídeo principal. Se o navegador bloquear o áudio automático, use "Ativar música".
+6. A localização (Mistura Fina Buffet — Av. Ledite Sampaio - Frei Damião, Jardim - CE) está escrita dentro do próprio vídeo.
+7. Não existe mais botão nem área clicável de localização.
+8. O único botão clicável sobre o vídeo é a área invisível do Manual do Convidado.
+9. Ao clicar no Manual, a arte abre em tela cheia. A seta no canto superior esquerdo retorna ao convite.
 
-Editor:
-- Abra com ?editor=1.
-- O editor mostra o vídeo principal e áreas azuis de edição.
-- Arraste cada área até coincidir com o botão desenhado no vídeo.
-- Use a bolinha para redimensionar.
-- Clique em "Copiar posições" e cole o objeto hotspots no config.js.
-- O editor é independente para cada turma.
+EDITOR
+- Abra o convite acrescentando ?editor=1 ao endereço.
+- O editor mostra somente a área clicável do Manual.
+- Arraste a área azul para coincidir com o botão Manual já desenhado no vídeo.
+- Use a alça no canto para redimensionar.
+- Clique em "Copiar posições" e substitua o objeto hotspots no config.js.
+- O editor salva posições localmente e permite copiar o código para publicar no GitHub.
 
-Publicação:
+PUBLICAÇÃO NO GITHUB PAGES
 1. Extraia o ZIP.
-2. Envie o conteúdo extraído para a raiz de um repositório GitHub.
-3. Em Settings > Pages, selecione Deploy from a branch, main, / (root).
-4. Atualize no index.html as URLs Open Graph que ainda contêm SEU-USUARIO/SEU-REPOSITORIO.
+2. Envie o conteúdo da pasta extraída (index.html, config.js, assets e .nojekyll) para a raiz do repositório da Turma A.
+3. Substitua os arquivos existentes quando o GitHub perguntar.
+4. Em Settings → Pages, selecione Deploy from a branch, branch main e pasta / (root).
+5. Aguarde o GitHub Pages publicar.
 
-Importante:
-- O autoplay com som não pode ser garantido em todos os celulares. O vídeo tenta tocar com som e, se bloqueado, toca silenciosamente com o botão Ativar som.
-- O manual tem sugestões de regras que precisam ser confirmadas pela organização antes da divulgação.
+CAPA DO WHATSAPP
+- O HTML contém título "Convite da Formatura do ABC — Turma A".
+- A imagem preview-whatsapp.jpg tem 1200 × 630 pixels.
+- O endereço da imagem está configurado no Open Graph. O WhatsApp pode manter prévias antigas em cache; depois de publicar, compartilhe novamente o link ou acrescente ?v=2.
 
-ATUALIZAÇÃO DE 07/11/2026:
-- O arquivo assets/opening.mp4 foi substituído pelo novo vídeo de abertura enviado em WEBM e convertido para MP4 compatível com navegadores.
-- O título de compartilhamento agora é: Convite da Formatura do ABC — Turma A.
-- As tags Open Graph/Twitter usam a capa 1200x630 com endereço absoluto e versão para renovar o cache.
+OBSERVAÇÃO SOBRE ÁUDIO
+Navegadores de celular podem impedir reprodução automática com som. O opening tenta iniciar com áudio e, se bloqueado, começa silenciosamente com a opção "Ativar som". A música pode exigir um toque em "Ativar música".
+
+DADOS DO EVENTO
+- Formatura do ABC — CEPA
+- 05/12/2026 às 18h30
+- Mistura Fina Buffet
+- Av. Ledite Sampaio - Frei Damião, Jardim - CE
+
+
+ATUALIZAÇÃO DA PRÉVIA DO WHATSAPP — A
+- Capa 1200 × 630 publicada também como assets/capa-whatsapp-turma-a-convite-especial.jpg.
+- O index.html aponta og:image para a URL pública nova, sem query string:
+  https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/assets/capa-whatsapp-turma-a-convite-especial.jpg
+- Para publicar, envie/substitua index.html e o novo JPG dentro de assets/.
+- Mantenha preview-whatsapp.jpg também; não precisa apagá-lo.
+- Para testar no WhatsApp, envie um link novo com ?v=3 no final.
