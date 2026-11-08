@@ -34,13 +34,11 @@
 <!-- TELA 1: OPENING. O vídeo tenta começar sozinho; não há botão "toque para abrir". -->
 <section id="openingScreen" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#080204;">
   <div id="openingStage" style="position:relative;width:min(100vw,56.25vh);height:min(100vh,177.7778vw);aspect-ratio:9/16;overflow:hidden;background:#160307;">
-    <video id="openingVideo" autoplay playsinline webkit-playsinline preload="auto" poster="assets/opening-poster.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#160307;">
-      <source src="assets/opening.mp4?v=20261107" type="video/mp4">
+    <video id="openingVideo" autoplay muted playsinline webkit-playsinline preload="auto" poster="assets/opening-poster.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#160307;">
+      <source src="assets/opening.mp4" type="video/mp4">
     </video>
-    <button id="skipOpening" type="button" style="position:absolute;z-index:5;top:max(14px,env(safe-area-inset-top));right:12px;padding:9px 14px;border:1px solid #ffe7b1;border-radius:999px;background:rgba(54,5,12,.78);color:#fff0c9;font:600 12px system-ui,sans-serif;box-shadow:0 2px 12px #0008;">Pular vídeo</button>
-    <button id="openingSound" type="button" hidden style="position:absolute;z-index:6;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:9px 14px;border:1px solid #ffe4a2;border-radius:999px;color:#4b0b12;background:linear-gradient(#fff0c4,#dba64d);font:700 12px system-ui,sans-serif;white-space:nowrap;">Ativar som</button>
-    <div id="openingFallback" hidden style="position:absolute;z-index:7;left:8%;right:8%;top:50%;transform:translateY(-50%);padding:14px;border:1px solid #ffe4a2;border-radius:12px;color:#fff0c9;background:rgba(35,4,10,.94);font:13px/1.4 system-ui,sans-serif;text-align:center;">
-      O navegador bloqueou a reprodução automática. Toque aqui para iniciar o convite.
+    <div id="openingFallback" role="button" tabindex="0" hidden style="position:absolute;z-index:7;left:8%;right:8%;top:50%;transform:translateY(-50%);padding:14px;border:1px solid #ffe4a2;border-radius:12px;color:#fff0c9;background:rgba(35,4,10,.94);font:13px/1.4 system-ui,sans-serif;text-align:center;cursor:pointer;">
+      Toque para iniciar o vídeo de abertura.
     </div>
   </div>
 </section>
@@ -54,8 +52,6 @@
     <!-- Áreas 100% transparentes: não desenham botões, apenas recebem o clique. -->
     <button id="manualHotspot" type="button" aria-label="Abrir Manual do Convidado" data-key="manual" style="position:absolute;z-index:4;left:16.4%;top:79.9%;width:67.2%;height:8%;padding:0;border:0;border-radius:999px;background:transparent;color:transparent;outline:none;"></button>
   </div>
-  <button id="musicUnlock" type="button" hidden style="position:fixed;z-index:9;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 16px;border:1px solid #ffe4a2;border-radius:999px;color:#4b0b12;background:linear-gradient(#fff0c4,#dba64d);box-shadow:0 4px 18px #0008;font:700 12px system-ui,sans-serif;white-space:nowrap;">Ativar música</button>
-  <div id="musicError" hidden style="position:fixed;z-index:8;left:8%;right:8%;bottom:70px;padding:10px;border:1px solid #ffe4a2;border-radius:10px;color:#fff0c9;background:rgba(35,4,10,.92);font:12px/1.4 system-ui,sans-serif;text-align:center;">Não foi possível carregar assets/musica.mp3. Confira o nome do arquivo.</div>
 </section>
 
 <!-- TELA 3: MANUAL COMO ARTE EM TELA CHEIA. -->
@@ -65,6 +61,10 @@
     <button id="backToMain" type="button" aria-label="Voltar ao convite" style="position:absolute;z-index:5;top:max(12px,env(safe-area-inset-top));left:12px;width:42px;height:42px;border:1px solid #ffe6a5;border-radius:50%;color:#fff0c9;background:rgba(55,5,12,.82);font:700 25px/1 system-ui,sans-serif;">‹</button>
   </div>
 </section>
+
+<!-- Música de fundo global: permanece tocando na abertura, vídeo principal e manual. -->
+<button id="musicUnlock" type="button" hidden style="position:fixed;z-index:30;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 16px;border:1px solid #ffe4a2;border-radius:999px;color:#4b0b12;background:linear-gradient(#fff0c4,#dba64d);box-shadow:0 4px 18px #0008;font:700 12px system-ui,sans-serif;white-space:nowrap;">Ativar música</button>
+<div id="musicError" hidden style="position:fixed;z-index:29;left:8%;right:8%;bottom:70px;padding:10px;border:1px solid #ffe4a2;border-radius:10px;color:#fff0c9;background:rgba(35,4,10,.92);font:12px/1.4 system-ui,sans-serif;text-align:center;"></div>
 
 <!-- EDITOR: só aparece quando a URL termina em ?editor=1. -->
 <aside id="editorPanel" hidden style="position:fixed;z-index:20;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));max-height:42vh;overflow:auto;padding:12px;border:1px solid #e7bd68;border-radius:14px;color:#fff0ca;background:rgba(39,4,10,.96);box-shadow:0 8px 30px #000a;font:12px/1.35 system-ui,sans-serif;">
@@ -108,7 +108,6 @@
   var music = $("backgroundMusic");
   var musicUnlock = $("musicUnlock");
   var musicError = $("musicError");
-  var openingSound = $("openingSound");
   var openingFallback = $("openingFallback");
   var editorPanel = $("editorPanel");
   var manualHotspot = $("manualHotspot");
@@ -120,7 +119,6 @@
   var areas = JSON.parse(JSON.stringify(cfg.hotspots || defaultAreas));
   var hotspotElements = { manual: manualHotspot };
   var storageKey = "cepa-invite-hotspots-" + (cfg.className || "A");
-  var audioUnlocked = false;
 
   function showOnly(screen) {
     openingScreen.hidden = screen !== openingScreen;
@@ -145,52 +143,50 @@
   }
 
   function startMusic() {
+    music.loop = true;
     music.volume = Number(cfg.musicVolume == null ? 0.28 : cfg.musicVolume);
     music.muted = false;
-    var attempt = music.play();
-    return attempt.then(function () {
+    var attempt;
+    try {
+      attempt = music.play();
+    } catch (error) {
+      attempt = Promise.reject(error);
+    }
+    return Promise.resolve(attempt).then(function () {
       musicUnlock.hidden = true;
       musicError.hidden = true;
       return true;
     }).catch(function (error) {
       musicUnlock.hidden = false;
-      musicError.textContent = "Não foi possível iniciar a música. Confira assets/musica.mp3 e tente novamente. (" + (error && error.name ? error.name : "erro de áudio") + ")";
-      musicError.hidden = false;
+      if (error && error.name && error.name !== "NotAllowedError" && error.name !== "AbortError") {
+        musicError.textContent = "Não foi possível carregar assets/musica.mp3. Confira o arquivo MP3.";
+        musicError.hidden = false;
+      }
       return false;
     });
   }
 
-  function enterMain(fromTap) {
+  function enterMain() {
     if (!mainScreen.hidden) return;
     openingVideo.pause();
     showOnly(mainScreen);
     mainVideo.loop = true;
     mainVideo.muted = true;
     mainVideo.currentTime = 0;
-    var mainPlay = mainVideo.play();
-    if (mainPlay && mainPlay.catch) {
-      mainPlay.catch(function () {
-        musicError.textContent = "Não foi possível carregar assets/video.mp4. Confira se o arquivo está na pasta assets.";
-        musicError.hidden = false;
-      });
-    }
-    if (fromTap) {
-      startMusic();
-    } else {
-      startMusic();
-    }
+    mainVideo.play().catch(function () {
+      musicError.textContent = "Não foi possível carregar assets/video.mp4. Confira o vídeo principal.";
+      musicError.hidden = false;
+    });
+    // Não chamar startMusic aqui: a mesma faixa continua desde a abertura, sem reiniciar.
   }
 
   // A abertura NÃO é pulada quando há erro. O erro fica visível para diagnóstico.
   openingVideo.addEventListener("error", function () {
-    openingFallback.textContent = "Erro ao carregar assets/opening.mp4. Verifique se o arquivo existe e se foi enviado ao GitHub.";
+    openingFallback.textContent = "Não foi possível carregar assets/opening.mp4. Verifique o arquivo no GitHub.";
     openingFallback.hidden = false;
-    openingFallback.style.cursor = "pointer";
   });
 
-  openingVideo.addEventListener("ended", function () {
-    enterMain(false);
-  });
+  openingVideo.addEventListener("ended", enterMain);
 
   // Loop nativo + fallback explícito, para reiniciar mesmo se o navegador emitir ended.
   mainVideo.loop = true;
@@ -206,42 +202,44 @@
     musicError.hidden = false;
   });
 
-  $("skipOpening").addEventListener("click", function () {
-    enterMain(true);
-  });
-
-  openingSound.addEventListener("click", function () {
-    openingVideo.muted = false;
-    openingVideo.volume = 1;
-    openingVideo.play().then(function () {
-      openingSound.hidden = true;
-      audioUnlocked = true;
-    }).catch(function () {
-      openingVideo.muted = true;
-      openingSound.textContent = "Som bloqueado";
-    });
-  });
-
   openingFallback.addEventListener("click", function () {
+    // O toque do visitante tenta liberar a música e a abertura no mesmo gesto.
+    startMusic();
     openingFallback.hidden = true;
     openingVideo.muted = true;
     openingVideo.play().then(function () {
-      openingSound.hidden = false;
+      openingFallback.hidden = true;
     }).catch(function () {
       openingFallback.hidden = false;
     });
   });
 
+  openingFallback.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openingFallback.click();
+    }
+  });
+
   music.addEventListener("error", function () {
-    musicError.textContent = "Erro ao carregar assets/musica.mp3. Confira o nome e o upload do MP3.";
+    musicError.textContent = "Não foi possível carregar assets/musica.mp3. Confira o arquivo MP3.";
     musicError.hidden = false;
     musicUnlock.hidden = true;
   });
 
+  music.addEventListener("ended", function () {
+    // Fallback de loop para navegadores que não respeitem o atributo loop.
+    music.currentTime = 0;
+    music.play().catch(function () {
+      musicUnlock.hidden = false;
+    });
+  });
+
   musicUnlock.addEventListener("click", function () {
-    musicUnlock.textContent = "Iniciando música…";
+    musicUnlock.textContent = "Ativando música…";
     startMusic().then(function (ok) {
-      musicUnlock.textContent = ok ? "Ativar música" : "Tentar música novamente";
+      if (!ok) musicUnlock.textContent = "Tentar ativar música";
+      else musicUnlock.textContent = "Ativar música";
     });
   });
 
@@ -259,21 +257,16 @@
   // Inicia o opening automaticamente. Primeiro tenta com áudio; se o navegador
   // bloquear, tenta novamente sem som e mostra um controle pequeno para ativá-lo.
   function autoplayOpening() {
-    openingVideo.muted = false;
-    openingVideo.volume = 1;
-    var attempt = openingVideo.play();
-    if (attempt && attempt.then) {
-      attempt.then(function () {
-        openingSound.hidden = true;
-      }).catch(function () {
-        openingVideo.muted = true;
-        openingVideo.play().then(function () {
-          openingSound.hidden = false;
-        }).catch(function () {
-          openingFallback.hidden = false;
-        });
-      });
-    }
+    openingVideo.muted = true;
+    openingVideo.defaultMuted = true;
+    openingVideo.setAttribute("muted", "");
+    openingVideo.playsInline = true;
+    openingVideo.play().then(function () {
+      openingFallback.hidden = true;
+    }).catch(function () {
+      openingFallback.textContent = "Toque para iniciar o vídeo de abertura.";
+      openingFallback.hidden = false;
+    });
   }
 
   // Editor: mostra o vídeo principal e as áreas de clique sem tocar a abertura.
@@ -299,7 +292,9 @@
     } catch (e) {}
   } else {
     showOnly(openingScreen);
+    music.loop = true;
     autoplayOpening();
+    startMusic();
   }
 
   // ---------------- Editor das duas áreas invisíveis ----------------
