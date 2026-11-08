@@ -6,15 +6,15 @@
 <meta name="theme-color" content="#39070d">
 <meta name="description" content="Convite Especial da Formatura do ABC do CEPA — Turma A. Esperamos você!">
 <link rel="canonical" href="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/">
-<link rel="image_src" href="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/whatsapp-preview-turma-a.jpg">
+<link rel="image_src" href="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/whatsapp-preview-turma-a-v2.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CEPA — Formatura do ABC">
 <meta property="og:url" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/">
 <meta property="og:title" content="Convite da Formatura do ABC — Turma A">
 <meta property="og:description" content="Convite Especial da Formatura do ABC do CEPA — Turma A. Esperamos você!">
-<meta property="og:image" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/whatsapp-preview-turma-a.jpg">
-<meta property="og:image:secure_url" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/whatsapp-preview-turma-a.jpg">
+<meta property="og:image" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/whatsapp-preview-turma-a-v2.jpg">
+<meta property="og:image:secure_url" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/whatsapp-preview-turma-a-v2.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,10 +22,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Convite da Formatura do ABC — Turma A">
 <meta name="twitter:description" content="Convite Especial da Formatura do ABC do CEPA — Turma A. Esperamos você!">
-<meta name="twitter:image" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/whatsapp-preview-turma-a.jpg">
+<meta name="twitter:image" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/whatsapp-preview-turma-a-v2.jpg">
 <title>Convite da Formatura do ABC — Turma A | CEPA</title>
-<link rel="preload" href="assets/opening.mp4?v=20261107" as="video" type="video/mp4">
-<link rel="preload" href="assets/video.mp4" as="video" type="video/mp4">
+<link rel="preload" href="assets/opening.mp4?v=20261108a" as="video" type="video/mp4">
+<link rel="preload" href="assets/video.mp4?v=20261108a" as="video" type="video/mp4">
 <link rel="preload" href="assets/musica.mp3" as="audio">
 <script src="config.js"></script>
 </head>
@@ -35,7 +35,7 @@
 <section id="openingScreen" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#080204;">
   <div id="openingStage" style="position:relative;width:min(100vw,56.25vh);height:min(100vh,177.7778vw);aspect-ratio:9/16;overflow:hidden;background:#160307;">
     <video id="openingVideo" autoplay muted playsinline webkit-playsinline preload="auto" poster="assets/opening-poster.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#160307;">
-      <source src="assets/opening.mp4" type="video/mp4">
+      <source src="assets/opening.mp4?v=20261108a" type="video/mp4">
     </video>
     <div id="openingFallback" role="button" tabindex="0" hidden style="position:absolute;z-index:7;left:8%;right:8%;top:50%;transform:translateY(-50%);padding:14px;border:1px solid #ffe4a2;border-radius:12px;color:#fff0c9;background:rgba(35,4,10,.94);font:13px/1.4 system-ui,sans-serif;text-align:center;cursor:pointer;">
       Toque para iniciar o vídeo de abertura.
@@ -47,7 +47,7 @@
 <section id="mainScreen" hidden style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;overflow:hidden;background:#080204;">
   <div id="mainStage" style="position:relative;width:min(100vw,56.25vh);height:min(100vh,177.7778vw);aspect-ratio:9/16;overflow:hidden;background:#160307;">
     <video id="mainVideo" playsinline webkit-playsinline loop preload="auto" poster="assets/video-poster.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#160307;">
-      <source src="assets/video.mp4" type="video/mp4">
+      <source src="assets/video.mp4?v=20261108a" type="video/mp4">
     </video>
     <!-- Áreas 100% transparentes: não desenham botões, apenas recebem o clique. -->
     <button id="manualHotspot" type="button" aria-label="Abrir Manual do Convidado" data-key="manual" style="position:absolute;z-index:4;left:16.4%;top:79.9%;width:67.2%;height:8%;padding:0;border:0;border-radius:999px;background:transparent;color:transparent;outline:none;"></button>
@@ -63,7 +63,7 @@
 </section>
 
 <!-- Música de fundo global: permanece tocando na abertura, vídeo principal e manual. -->
-<button id="musicUnlock" type="button" hidden style="position:fixed;z-index:30;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 16px;border:1px solid #ffe4a2;border-radius:999px;color:#4b0b12;background:linear-gradient(#fff0c4,#dba64d);box-shadow:0 4px 18px #0008;font:700 12px system-ui,sans-serif;white-space:nowrap;">Ativar música</button>
+<button id="musicUnlock" type="button" style="position:fixed;z-index:30;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 16px;border:1px solid #ffe4a2;border-radius:999px;color:#4b0b12;background:linear-gradient(#fff0c4,#dba64d);box-shadow:0 4px 18px #0008;font:700 12px system-ui,sans-serif;white-space:nowrap;">Ativar música</button>
 <div id="musicError" hidden style="position:fixed;z-index:29;left:8%;right:8%;bottom:70px;padding:10px;border:1px solid #ffe4a2;border-radius:10px;color:#fff0c9;background:rgba(35,4,10,.92);font:12px/1.4 system-ui,sans-serif;text-align:center;"></div>
 
 <!-- EDITOR: só aparece quando a URL termina em ?editor=1. -->
@@ -93,7 +93,7 @@
   <p style="margin:7px 0 0;color:#d9c6a4;font-size:10px;">Arraste as áreas azuis sobre os botões que já aparecem no vídeo. Puxe a bolinha no canto para redimensionar. Depois copie as posições para config.js.</p>
 </aside>
 
-<audio id="backgroundMusic" src="assets/musica.mp3" preload="auto" loop></audio>
+<audio id="backgroundMusic" src="assets/musica.mp3?v=20261108a" preload="auto" loop></audio>
 
 <script>
 (function () {
@@ -236,10 +236,18 @@
   });
 
   musicUnlock.addEventListener("click", function () {
+    if (!music.paused) {
+      musicUnlock.hidden = true;
+      return;
+    }
     musicUnlock.textContent = "Ativando música…";
     startMusic().then(function (ok) {
-      if (!ok) musicUnlock.textContent = "Tentar ativar música";
-      else musicUnlock.textContent = "Ativar música";
+      if (!ok) {
+        musicUnlock.textContent = "Tentar ativar música";
+        musicUnlock.hidden = false;
+      } else {
+        musicUnlock.hidden = true;
+      }
     });
   });
 

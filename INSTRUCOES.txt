@@ -1,39 +1,47 @@
 CONVITE DIGITAL — FORMATURA DO ABC | CEPA — TURMA A
+PACOTE CORRIGIDO A PARTIR DO ZIP REAL BAIXADO DO GITHUB
 
-ESTRUTURA
-- index.html: convite completo; estilos inline e JavaScript embutido.
-- config.js: configuração da turma e posição da área invisível do Manual.
-- assets/opening.mp4: novo opening, convertido de WEBM para MP4 H.264 720×1280, versão compactada (aprox. 5,23 MB).
-- assets/video.mp4: vídeo principal da Turma A, mantido sem alterações.
-- assets/musica.mp3: nova música de fundo enviada pelo cliente.
-- assets/manual.webp: MANUAL OFICIAL atualizado, com as seis orientações e tipografia uniforme.
-- assets/preview-whatsapp.jpg e imagens associadas: capas aprovadas, preservadas.
-- assets/opening-poster.webp e video-poster.webp: prévias dos vídeos.
+ESTRUTURA OBRIGATÓRIA DO REPOSITÓRIO
+index.html
+config.js
+.nojekyll
+whatsapp-preview-turma-a.jpg
+whatsapp-preview-turma-a-v2.jpg
+assets/
+  opening.mp4
+  opening-poster.webp
+  video.mp4
+  video-poster.webp
+  musica.mp3
+  manual.webp
 
-FUNCIONAMENTO
-1. Ao abrir o link, o vídeo de abertura começa automaticamente, sem botão de pular.
-2. A abertura é reproduzida até o final. Somente o evento "ended" leva à página principal.
-3. A nova música MP3 é iniciada junto com o opening e fica em loop contínuo.
-4. Na transição para o vídeo principal, a música não é pausada, reiniciada nem reposicionada.
-5. O vídeo principal da Turma A continua em loop infinito.
-6. Ao abrir o Manual, a música continua tocando; o vídeo principal pausa e retoma ao voltar.
-7. Não há botão de localização. O endereço do buffet está escrito no vídeo.
-8. O único hotspot invisível no vídeo principal é o Manual do Convidado.
+CORREÇÕES FEITAS
+- O ZIP original não continha assets/opening.mp4, embora o index.html tentasse carregá-lo. O arquivo foi inserido.
+- O novo opening-novo.webm foi convertido para MP4 H.264, 720×1280, 30 fps, otimizado para celular.
+- O vídeo de abertura não tem botão de pular. A página principal só aparece quando o evento ended da abertura ocorre.
+- A trilha MP3 fornecida está em assets/musica.mp3 e loop infinito.
+- A música é iniciada na abertura e não é reiniciada na transição para o vídeo principal nem ao abrir o manual.
+- Como celulares podem bloquear áudio automático, o botão "Ativar música" fica visível desde o início. Ele não pula o vídeo e some depois que o áudio inicia.
+- O vídeo principal da Turma A permanece em loop.
+- O manual oficial atualizado está em assets/manual.webp.
+- A área invisível clicável continua sendo somente o Manual.
+- A capa do WhatsApp foi duplicada com um nome novo para evitar cache antigo.
 
-ÁUDIO AUTOMÁTICO
-O convite tenta iniciar a música na abertura. Alguns navegadores bloqueiam áudio automático antes de uma interação do visitante. Se isso acontecer, aparece apenas o botão discreto "Ativar música". A abertura continua normalmente, sem opção de pular. Ao tocar em "Ativar música", a faixa começa do ponto inicial/atual e continua sem reiniciar na transição.
+WHATSAPP / OPEN GRAPH
+- A imagem social é whatsapp-preview-turma-a-v2.jpg, na raiz, com 1200×630 px.
+- O index.html aponta og:image, og:image:secure_url, twitter:image e image_src para essa imagem.
+- As metatags ficam no index.html, dentro do <head>. O config.js contém apenas configuração da turma e hotspot; não precisa conter Open Graph.
 
-EDITOR
-- Abra com ?editor=1.
-- O editor permite ajustar somente a área invisível do Manual.
-- Arraste a área e use a alça para redimensionar.
-- Copie as posições para o objeto hotspots no config.js.
+PUBLICAÇÃO NO GITHUB
+1. Abra o repositório da Turma A.
+2. Envie o CONTEÚDO desta pasta para a raiz do repositório. Não envie a pasta externa "TURMA_A_CORRIGIDA_VALIDACAO" como subpasta.
+3. Substitua index.html, config.js e os arquivos existentes.
+4. Envie também os dois JPGs de prévia para a raiz.
+5. Envie os arquivos de mídia dentro da pasta assets.
+6. Faça commit e aguarde GitHub Pages publicar.
 
-PUBLICAÇÃO
-- Extraia o ZIP.
-- Envie o conteúdo extraído (index.html, config.js, assets, .nojekyll e arquivos de capa na raiz) para a raiz do repositório da turma.
-- Substitua os arquivos correspondentes no GitHub.
-- Em Settings → Pages, branch main, pasta / (root).
+TESTE DE COMPARTILHAMENTO
+Depois da publicação, compartilhe:
+https://premium-invites.github.io/Convite-Formatura-ABC-Turma-A/?preview=20261108a
 
-
-O pacote contém a capa Open Graph na raiz, com o nome whatsapp-preview-turma-a.jpg.
+O WhatsApp pode manter prévias antigas em cache. A URL com ?preview=20261108a cria uma nova URL para teste.
