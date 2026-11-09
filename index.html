@@ -1,3 +1,7 @@
+
+index.html
+
+100%
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -63,7 +67,7 @@
 </section>
 
 <!-- Música de fundo global: permanece tocando na abertura, vídeo principal e manual. -->
-<button id="musicUnlock" type="button" style="position:fixed;z-index:30;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 16px;border:1px solid #ffe4a2;border-radius:999px;color:#4b0b12;background:linear-gradient(#fff0c4,#dba64d);box-shadow:0 4px 18px #0008;font:700 12px system-ui,sans-serif;white-space:nowrap;">Ativar música</button>
+<button id="musicUnlock" type="button" style="position:fixed;z-index:30;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 16px;border:1px solid #ffe4a2;border-radius:999px;color:#4b0b12;background:linear-gradient(#fff0c4,#dba64d);box-shadow:0 4px 18px #0008;font:700 12px system-ui,sans-serif;white-space:nowrap;">Ativar áudio</button>
 <div id="musicError" hidden style="position:fixed;z-index:29;left:8%;right:8%;bottom:70px;padding:10px;border:1px solid #ffe4a2;border-radius:10px;color:#fff0c9;background:rgba(35,4,10,.92);font:12px/1.4 system-ui,sans-serif;text-align:center;"></div>
 
 <!-- EDITOR: só aparece quando a URL termina em ?editor=1. -->
@@ -153,7 +157,7 @@
       attempt = Promise.reject(error);
     }
     return Promise.resolve(attempt).then(function () {
-      musicUnlock.hidden = true;
+      musicUnlock.hidden = openingScreen.hidden || !openingVideo.muted;
       musicError.hidden = true;
       return true;
     }).catch(function (error) {
@@ -203,10 +207,13 @@
   });
 
   openingFallback.addEventListener("click", function () {
-    // O toque do visitante tenta liberar a música e a abertura no mesmo gesto.
+    // O toque inicia a abertura com o áudio original e libera a trilha MP3.
+    openingVideo.muted = false;
+    openingVideo.defaultMuted = false;
+    openingVideo.removeAttribute("muted");
+    openingVideo.volume = 1;
     startMusic();
     openingFallback.hidden = true;
-    openingVideo.muted = true;
     openingVideo.play().then(function () {
       openingFallback.hidden = true;
     }).catch(function () {
@@ -236,14 +243,17 @@
   });
 
   musicUnlock.addEventListener("click", function () {
-    if (!music.paused) {
-      musicUnlock.hidden = true;
-      return;
+    musicUnlock.textContent = "Ativando áudio…";
+    if (!openingScreen.hidden) {
+      openingVideo.muted = false;
+      openingVideo.defaultMuted = false;
+      openingVideo.removeAttribute("muted");
+      openingVideo.volume = 1;
+      openingVideo.play().catch(function () {});
     }
-    musicUnlock.textContent = "Ativando música…";
     startMusic().then(function (ok) {
       if (!ok) {
-        musicUnlock.textContent = "Tentar ativar música";
+        musicUnlock.textContent = "Tentar ativar áudio";
         musicUnlock.hidden = false;
       } else {
         musicUnlock.hidden = true;
@@ -448,3 +458,4 @@
 </script>
 </body>
 </html>
+Displaying index.html.
