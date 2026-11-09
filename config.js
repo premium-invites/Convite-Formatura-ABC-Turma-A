@@ -1,6 +1,6 @@
 window.CEPA_CONFIG = {
   "className": "A",
-  "musicVolume": 0.28,
+  "musicVolume": 0.6,
   "hotspots": {
     "manual": {
       "left": 16.4,
